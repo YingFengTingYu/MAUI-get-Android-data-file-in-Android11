@@ -13,10 +13,13 @@ public partial class MainPage : ContentPage
 	private void OnCounterClicked(object sender, EventArgs e)
 	{
         //I use pvz1 to check my App
-        //All the class is in /Platforms/Android
+        //All the class is in \Platforms\Android
+        //You need to change AndroidManifest.xml
+        //Add android:preserveLegacyExternalStorage="true" android:requestLegacyExternalStorage="true"
+        //Add <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
         //FileHelper.cs is to get, create or delete the file
         //MainActivity.cs is to get the result of requesting permission
-        //SAFHelper.cs is to get the file from /Android/obb(Untested) or /Android/data by SAF
+        //SAFHelper.cs is to get the file from /sdcard/Android/obb(Untested) or /sdcard/Android/data by SAF
         //SimpleFile.cs is to describe a file
         //StreamCreater.cs is to convert java stream to c sharp stream
         string path = "/sdcard/Android/data/com.popcap.pvz_na/files/userdata/user1.dat";
