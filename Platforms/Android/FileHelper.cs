@@ -38,6 +38,7 @@ namespace MAUIPickFile
         static readonly string SdcardPath1 = "/sdcard";
         static readonly string SdcardPath2 = "/storage/emulated/0";
         static readonly string PathSeparator = "/";
+        static readonly bool useSAF = Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.R;
 
         static string _formatPath(string path)
         {
@@ -83,7 +84,8 @@ namespace MAUIPickFile
 
         static async Task<SimpleFile> _getFile(string path)
         {
-            int type = _checkIfSAF(path, out string subPath);
+            string subPath = null;
+            int type = useSAF ? _checkIfSAF(path, out subPath) : 0;
             if (type == 1)
             {
                 //data
@@ -113,7 +115,8 @@ namespace MAUIPickFile
 
         static async Task<SimpleFile> _createFile(string path)
         {
-            int type = _checkIfSAF(path, out string subPath);
+            string subPath = null;
+            int type = useSAF ? _checkIfSAF(path, out subPath) : 0;
             if (type == 1)
             {
                 //data
@@ -152,7 +155,8 @@ namespace MAUIPickFile
         /// <returns></returns>
         static async Task<int> _fileExist(string path)
         {
-            int type = _checkIfSAF(path, out string subPath);
+            string subPath = null;
+            int type = useSAF ? _checkIfSAF(path, out subPath) : 0;
             if (type == 1)
             {
                 //data
