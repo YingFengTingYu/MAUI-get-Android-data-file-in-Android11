@@ -23,6 +23,7 @@ public partial class MainPage : ContentPage
         //SimpleFile.cs is to describe a file
         //StreamCreater.cs is to convert java stream to c sharp stream
         string path = "/sdcard/Android/data/com.popcap.pvz_na/files/userdata/user1.dat";
+        path = "/sdcard/Android/obb/com.popcap.pvz_na/main.60002398.com.popcap.pvz_na.obb";
         new Thread(async () =>
         {
             using (Stream ms = await StreamCreater.OpenOrCreate(path))
@@ -32,7 +33,6 @@ public partial class MainPage : ContentPage
                 ms.WriteByte(200);
                 ms.WriteByte(3);
                 ms.WriteByte(40);
-                ms.WriteByte(58);
                 //Save the changes
                 await StreamCreater.Save(ms, path);
             }

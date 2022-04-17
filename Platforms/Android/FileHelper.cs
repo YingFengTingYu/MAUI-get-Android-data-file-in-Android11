@@ -74,7 +74,7 @@ namespace MAUIPickFile
             return type;
         }
 
-        static bool data = true;
+        static bool data = false;
         static bool obb = false;
 
         static async Task<bool> RequestAndroidDataPermission() => data || (data = await SAFHelper.RequestAndroidDataPermission());
@@ -91,6 +91,7 @@ namespace MAUIPickFile
                 if (!ask) return null;
                 DocumentFile file = SAFHelper.GetSubDocumentFileFromAndroidData(subPath.Split('/'));
                 if (file == null || file.IsDirectory) return null;
+                data = true;
                 return new SimpleFile(path, file);
             }
             else if (type == 2)
@@ -100,6 +101,7 @@ namespace MAUIPickFile
                 if (!ask) return null;
                 DocumentFile file = SAFHelper.GetSubDocumentFileFromAndroidObb(subPath.Split('/'));
                 if (file == null || file.IsDirectory) return null;
+                obb = true;
                 return new SimpleFile(path, file);
             }
             else
@@ -119,6 +121,7 @@ namespace MAUIPickFile
                 if (!ask) return null;
                 DocumentFile file = SAFHelper.CreateSubDocumentFileFromAndroidData(subPath.Split('/'));
                 if (file == null || file.IsDirectory) return null;
+                data = true;
                 return new SimpleFile(path, file);
             }
             else if (type == 2)
@@ -128,6 +131,7 @@ namespace MAUIPickFile
                 if (!ask) return null;
                 DocumentFile file = SAFHelper.CreateSubDocumentFileFromAndroidObb(subPath.Split('/'));
                 if (file == null || file.IsDirectory) return null;
+                obb = true;
                 return new SimpleFile(path, file);
             }
             else
@@ -156,6 +160,7 @@ namespace MAUIPickFile
                 if (!ask) return 0;
                 DocumentFile file = SAFHelper.GetSubDocumentFileFromAndroidData(subPath.Split('/'));
                 if (file == null) return 0;
+                data = true;
                 return file.IsDirectory ? 2 : 1;
             }
             else if (type == 2)
@@ -165,6 +170,7 @@ namespace MAUIPickFile
                 if (!ask) return 0;
                 DocumentFile file = SAFHelper.GetSubDocumentFileFromAndroidObb(subPath.Split('/'));
                 if (file == null) return 0;
+                obb = true;
                 return file.IsDirectory ? 2 : 1;
             }
             else

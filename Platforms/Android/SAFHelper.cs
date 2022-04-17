@@ -20,6 +20,7 @@ namespace MAUIPickFile
         internal static int REQUEST_CODE_FOR_MANAGE = 2;
 
         //public
+
         public static SAFFileList DocumentFile => _safFileList ??= new SAFFileList();
         /// <summary>
         /// Get DocumentFile of /sdcard/Android/data

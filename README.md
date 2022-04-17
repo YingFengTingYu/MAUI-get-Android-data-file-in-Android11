@@ -12,3 +12,4 @@ MainActivity.cs is to get the result of requesting permission
 SAFHelper.cs is to get the file from /sdcard/Android/obb(Untested) or /sdcard/Android/data by SAF
 SimpleFile.cs is to describe a file
 StreamCreater.cs is to convert java stream to c sharp stream
+In fact, you just need to request the permission once. So you need a way to save the permission. 
