@@ -1,6 +1,8 @@
 # MAUIPickFile
 Edit the file in /sdcard/Android/data by C#, dotnet6 and MAUI!
 
+Reference articles: https://www.sohu.com/a/479611641_121124367
+
 All the class is in \Platforms\Android
 You need to change AndroidManifest.xml
 Add android:preserveLegacyExternalStorage="true" android:requestLegacyExternalStorage="true"
